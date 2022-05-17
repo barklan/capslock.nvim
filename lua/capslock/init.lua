@@ -3,7 +3,7 @@ local M = {}
 M.capslock = "capslock"
 
 M.enable = function()
-    vim.b.capslock(0, M.capslock, true)
+    vim.api.nvim_buf_set_var(0, M.capslock, true)
 end
 
 M.disable = function()
