@@ -1,4 +1,0 @@
-NOW THIS SENTENCE IS ALL CAPS
-and this is all lowercase
-I CAN TURN IT ON and off
-ACTIVATED IN NORMAL MODE AND CONTINUE, deactivated in insert mode

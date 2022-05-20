@@ -1,1 +1,1 @@
-icnow this sentence is all capsiand this is all lowercaseci can turn it on cand offciactivated in normal modea and continuec, de€kb€kbcdeactivated in insert mode:wq:w test_output.txt:q:q:q!:q!
+icthis is all uppercasea. and this is all lowercaseconc and offcifrom normala stays activec and ruthlessly turn off in insert mode:wq
