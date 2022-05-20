@@ -809,8 +809,7 @@ local pats = {
 		[0x01eea8] = 1,
 		[0x01eea9] = 1,
 	},
-	[0x63] = {
-	},
+	[0x63] = {},
 	[0x64] = {
 		[0x000030] = 1,
 		[0x000031] = 1,
@@ -2797,316 +2796,372 @@ local pats = {
 	[0x58] = {},
 	[0x5a] = {},
 }
-setmetatable( pats[0x61], { __index = function ( t, k )
-	local c = tonumber( k ) or 0/0;
-	return pats[0x6c][k] or
-		pats[0x75][k] or
-		c >= 0x0002b0 and c < 0x0002c2 or
-		c >= 0x0002c6 and c < 0x0002d2 or
-		c >= 0x0005d0 and c < 0x0005eb or
-		c >= 0x000620 and c < 0x00064b or
-		c >= 0x000671 and c < 0x0006d4 or
-		c >= 0x000712 and c < 0x000730 or
-		c >= 0x00074d and c < 0x0007a6 or
-		c >= 0x0007ca and c < 0x0007eb or
-		c >= 0x000800 and c < 0x000816 or
-		c >= 0x000840 and c < 0x000859 or
-		c >= 0x0008a2 and c < 0x0008ad or
-		c >= 0x000904 and c < 0x00093a or
-		c >= 0x000958 and c < 0x000962 or
-		c >= 0x000993 and c < 0x0009a9 or
-		c >= 0x000a13 and c < 0x000a29 or
-		c >= 0x000a93 and c < 0x000aa9 or
-		c >= 0x000b13 and c < 0x000b29 or
-		c >= 0x000bae and c < 0x000bba or
-		c >= 0x000c12 and c < 0x000c29 or
-		c >= 0x000c2a and c < 0x000c34 or
-		c >= 0x000c92 and c < 0x000ca9 or
-		c >= 0x000caa and c < 0x000cb4 or
-		c >= 0x000d12 and c < 0x000d3b or
-		c >= 0x000d85 and c < 0x000d97 or
-		c >= 0x000d9a and c < 0x000db2 or
-		c >= 0x000e01 and c < 0x000e31 or
-		c >= 0x000f49 and c < 0x000f6d or
-		c >= 0x001000 and c < 0x00102b or
-		c >= 0x001075 and c < 0x001082 or
-		c >= 0x0010d0 and c < 0x0010fb or
-		c >= 0x0010fc and c < 0x001249 or
-		c >= 0x001260 and c < 0x001289 or
-		c >= 0x001290 and c < 0x0012b1 or
-		c >= 0x0012c8 and c < 0x0012d7 or
-		c >= 0x0012d8 and c < 0x001311 or
-		c >= 0x001318 and c < 0x00135b or
-		c >= 0x001380 and c < 0x001390 or
-		c >= 0x0013a0 and c < 0x0013f5 or
-		c >= 0x001401 and c < 0x00166d or
-		c >= 0x00166f and c < 0x001680 or
-		c >= 0x001681 and c < 0x00169b or
-		c >= 0x0016a0 and c < 0x0016eb or
-		c >= 0x001700 and c < 0x00170d or
-		c >= 0x001720 and c < 0x001732 or
-		c >= 0x001740 and c < 0x001752 or
-		c >= 0x001760 and c < 0x00176d or
-		c >= 0x001780 and c < 0x0017b4 or
-		c >= 0x001820 and c < 0x001878 or
-		c >= 0x001880 and c < 0x0018a9 or
-		c >= 0x0018b0 and c < 0x0018f6 or
-		c >= 0x001900 and c < 0x00191d or
-		c >= 0x001950 and c < 0x00196e or
-		c >= 0x001980 and c < 0x0019ac or
-		c >= 0x001a00 and c < 0x001a17 or
-		c >= 0x001a20 and c < 0x001a55 or
-		c >= 0x001b05 and c < 0x001b34 or
-		c >= 0x001b83 and c < 0x001ba1 or
-		c >= 0x001bba and c < 0x001be6 or
-		c >= 0x001c00 and c < 0x001c24 or
-		c >= 0x001c5a and c < 0x001c7e or
-		c >= 0x001d2c and c < 0x001d6b or
-		c >= 0x001d9b and c < 0x001dc0 or
-		c >= 0x002090 and c < 0x00209d or
-		c >= 0x002d30 and c < 0x002d68 or
-		c >= 0x002d80 and c < 0x002d97 or
-		c >= 0x003041 and c < 0x003097 or
-		c >= 0x0030a1 and c < 0x0030fb or
-		c >= 0x003105 and c < 0x00312e or
-		c >= 0x003131 and c < 0x00318f or
-		c >= 0x0031a0 and c < 0x0031bb or
-		c >= 0x0031f0 and c < 0x003200 or
-		c >= 0x003400 and c < 0x004db6 or
-		c >= 0x004e00 and c < 0x009fcd or
-		c >= 0x00a000 and c < 0x00a48d or
-		c >= 0x00a4d0 and c < 0x00a4fe or
-		c >= 0x00a500 and c < 0x00a60d or
-		c >= 0x00a610 and c < 0x00a620 or
-		c >= 0x00a6a0 and c < 0x00a6e6 or
-		c >= 0x00a80c and c < 0x00a823 or
-		c >= 0x00a840 and c < 0x00a874 or
-		c >= 0x00a882 and c < 0x00a8b4 or
-		c >= 0x00a90a and c < 0x00a926 or
-		c >= 0x00a930 and c < 0x00a947 or
-		c >= 0x00a960 and c < 0x00a97d or
-		c >= 0x00a984 and c < 0x00a9b3 or
-		c >= 0x00aa00 and c < 0x00aa29 or
-		c >= 0x00aa60 and c < 0x00aa77 or
-		c >= 0x00aa80 and c < 0x00aab0 or
-		c >= 0x00aae0 and c < 0x00aaeb or
-		c >= 0x00abc0 and c < 0x00abe3 or
-		c >= 0x00ac00 and c < 0x00d7a4 or
-		c >= 0x00d7b0 and c < 0x00d7c7 or
-		c >= 0x00d7cb and c < 0x00d7fc or
-		c >= 0x00f900 and c < 0x00fa6e or
-		c >= 0x00fa70 and c < 0x00fada or
-		c >= 0x00fb1f and c < 0x00fb29 or
-		c >= 0x00fb2a and c < 0x00fb37 or
-		c >= 0x00fb46 and c < 0x00fbb2 or
-		c >= 0x00fbd3 and c < 0x00fd3e or
-		c >= 0x00fd50 and c < 0x00fd90 or
-		c >= 0x00fd92 and c < 0x00fdc8 or
-		c >= 0x00fdf0 and c < 0x00fdfc or
-		c >= 0x00fe76 and c < 0x00fefd or
-		c >= 0x00ff66 and c < 0x00ffbf or
-		c >= 0x010000 and c < 0x01000c or
-		c >= 0x01000d and c < 0x010027 or
-		c >= 0x010028 and c < 0x01003b or
-		c >= 0x01003f and c < 0x01004e or
-		c >= 0x010050 and c < 0x01005e or
-		c >= 0x010080 and c < 0x0100fb or
-		c >= 0x010280 and c < 0x01029d or
-		c >= 0x0102a0 and c < 0x0102d1 or
-		c >= 0x010300 and c < 0x01031f or
-		c >= 0x010330 and c < 0x010341 or
-		c >= 0x010380 and c < 0x01039e or
-		c >= 0x0103a0 and c < 0x0103c4 or
-		c >= 0x010450 and c < 0x01049e or
-		c >= 0x01080a and c < 0x010836 or
-		c >= 0x01083f and c < 0x010856 or
-		c >= 0x010900 and c < 0x010916 or
-		c >= 0x010920 and c < 0x01093a or
-		c >= 0x010980 and c < 0x0109b8 or
-		c >= 0x010a19 and c < 0x010a34 or
-		c >= 0x010a60 and c < 0x010a7d or
-		c >= 0x010b00 and c < 0x010b36 or
-		c >= 0x010b40 and c < 0x010b56 or
-		c >= 0x010b60 and c < 0x010b73 or
-		c >= 0x010c00 and c < 0x010c49 or
-		c >= 0x011003 and c < 0x011038 or
-		c >= 0x011083 and c < 0x0110b0 or
-		c >= 0x0110d0 and c < 0x0110e9 or
-		c >= 0x011103 and c < 0x011127 or
-		c >= 0x011183 and c < 0x0111b3 or
-		c >= 0x011680 and c < 0x0116ab or
-		c >= 0x012000 and c < 0x01236f or
-		c >= 0x013000 and c < 0x01342f or
-		c >= 0x016800 and c < 0x016a39 or
-		c >= 0x016f00 and c < 0x016f45 or
-		c >= 0x016f93 and c < 0x016fa0 or
-		c >= 0x01ee05 and c < 0x01ee20 or
-		c >= 0x01ee29 and c < 0x01ee33 or
-		c >= 0x01ee80 and c < 0x01ee8a or
-		c >= 0x01ee8b and c < 0x01ee9c or
-		c >= 0x01eeab and c < 0x01eebc or
-		c >= 0x020000 and c < 0x02a6d7 or
-		c >= 0x02a700 and c < 0x02b735 or
-		c >= 0x02b740 and c < 0x02b81e or
-		c >= 0x02f800 and c < 0x02fa1e
-end } )
-setmetatable( pats[0x63], { __index = function ( t, k )
-	local c = tonumber( k ) or 0/0;
-	return c >= 0x000000 and c < 0x000020 or
-		c >= 0x00007f and c < 0x0000a0
-end } )
-setmetatable( pats[0x64], { __index = function ( t, k )
-	local c = tonumber( k ) or 0/0;
-	return c >= 0x000660 and c < 0x00066a or
-		c >= 0x0006f0 and c < 0x0006fa or
-		c >= 0x0007c0 and c < 0x0007ca or
-		c >= 0x000966 and c < 0x000970 or
-		c >= 0x0009e6 and c < 0x0009f0 or
-		c >= 0x000a66 and c < 0x000a70 or
-		c >= 0x000ae6 and c < 0x000af0 or
-		c >= 0x000b66 and c < 0x000b70 or
-		c >= 0x000be6 and c < 0x000bf0 or
-		c >= 0x000c66 and c < 0x000c70 or
-		c >= 0x000ce6 and c < 0x000cf0 or
-		c >= 0x000d66 and c < 0x000d70 or
-		c >= 0x000e50 and c < 0x000e5a or
-		c >= 0x000ed0 and c < 0x000eda or
-		c >= 0x000f20 and c < 0x000f2a or
-		c >= 0x001040 and c < 0x00104a or
-		c >= 0x001090 and c < 0x00109a or
-		c >= 0x0017e0 and c < 0x0017ea or
-		c >= 0x001810 and c < 0x00181a or
-		c >= 0x001946 and c < 0x001950 or
-		c >= 0x0019d0 and c < 0x0019da or
-		c >= 0x001a80 and c < 0x001a8a or
-		c >= 0x001a90 and c < 0x001a9a or
-		c >= 0x001b50 and c < 0x001b5a or
-		c >= 0x001bb0 and c < 0x001bba or
-		c >= 0x001c40 and c < 0x001c4a or
-		c >= 0x001c50 and c < 0x001c5a or
-		c >= 0x00a620 and c < 0x00a62a or
-		c >= 0x00a8d0 and c < 0x00a8da or
-		c >= 0x00a900 and c < 0x00a90a or
-		c >= 0x00a9d0 and c < 0x00a9da or
-		c >= 0x00aa50 and c < 0x00aa5a or
-		c >= 0x00abf0 and c < 0x00abfa or
-		c >= 0x00ff10 and c < 0x00ff1a or
-		c >= 0x0104a0 and c < 0x0104aa or
-		c >= 0x011066 and c < 0x011070 or
-		c >= 0x0110f0 and c < 0x0110fa or
-		c >= 0x011136 and c < 0x011140 or
-		c >= 0x0111d0 and c < 0x0111da or
-		c >= 0x0116c0 and c < 0x0116ca or
-		c >= 0x01d7ce and c < 0x01d800
-end } )
-setmetatable( pats[0x6c], { __index = function ( t, k )
-	local c = tonumber( k ) or 0/0;
-	return c >= 0x0000df and c < 0x0000f7 or
-		c >= 0x00024f and c < 0x000294 or
-		c >= 0x000295 and c < 0x0002b0 or
-		c >= 0x0003ac and c < 0x0003cf or
-		c >= 0x000430 and c < 0x000460 or
-		c >= 0x000561 and c < 0x000588 or
-		c >= 0x001d00 and c < 0x001d2c or
-		c >= 0x001d6b and c < 0x001d78 or
-		c >= 0x001d79 and c < 0x001d9b or
-		c >= 0x001f70 and c < 0x001f7e or
-		c >= 0x002c30 and c < 0x002c5f or
-		c >= 0x002d00 and c < 0x002d26 or
-		c >= 0x00ff41 and c < 0x00ff5b or
-		c >= 0x010428 and c < 0x010450 or
-		c >= 0x01d41a and c < 0x01d434 or
-		c >= 0x01d456 and c < 0x01d468 or
-		c >= 0x01d482 and c < 0x01d49c or
-		c >= 0x01d4c5 and c < 0x01d4d0 or
-		c >= 0x01d4ea and c < 0x01d504 or
-		c >= 0x01d51e and c < 0x01d538 or
-		c >= 0x01d552 and c < 0x01d56c or
-		c >= 0x01d586 and c < 0x01d5a0 or
-		c >= 0x01d5ba and c < 0x01d5d4 or
-		c >= 0x01d5ee and c < 0x01d608 or
-		c >= 0x01d622 and c < 0x01d63c or
-		c >= 0x01d656 and c < 0x01d670 or
-		c >= 0x01d68a and c < 0x01d6a6 or
-		c >= 0x01d6c2 and c < 0x01d6db or
-		c >= 0x01d6fc and c < 0x01d715 or
-		c >= 0x01d736 and c < 0x01d74f or
-		c >= 0x01d770 and c < 0x01d789 or
-		c >= 0x01d7aa and c < 0x01d7c3
-end } )
-setmetatable( pats[0x70], { __index = function ( t, k )
-	local c = tonumber( k ) or 0/0;
-	return c >= 0x000700 and c < 0x00070e or
-		c >= 0x000830 and c < 0x00083f or
-		c >= 0x000f04 and c < 0x000f13 or
-		c >= 0x001800 and c < 0x00180b or
-		c >= 0x002010 and c < 0x002028 or
-		c >= 0x002030 and c < 0x002044 or
-		c >= 0x002045 and c < 0x002052 or
-		c >= 0x002053 and c < 0x00205f or
-		c >= 0x002768 and c < 0x002776 or
-		c >= 0x0027e6 and c < 0x0027f0 or
-		c >= 0x002983 and c < 0x002999 or
-		c >= 0x002e00 and c < 0x002e2f or
-		c >= 0x002e30 and c < 0x002e3c or
-		c >= 0x003008 and c < 0x003012 or
-		c >= 0x003014 and c < 0x003020 or
-		c >= 0x00a9c1 and c < 0x00a9ce or
-		c >= 0x00fe10 and c < 0x00fe1a or
-		c >= 0x00fe30 and c < 0x00fe53 or
-		c >= 0x00fe54 and c < 0x00fe62
-end } )
-setmetatable( pats[0x73], { __index = function ( t, k )
-	local c = tonumber( k ) or 0/0;
-	return c >= 0x002000 and c < 0x00200b
-end } )
-setmetatable( pats[0x75], { __index = function ( t, k )
-	local c = tonumber( k ) or 0/0;
-	return c >= 0x0000c0 and c < 0x0000d7 or
-		c >= 0x000391 and c < 0x0003a2 or
-		c >= 0x0003fd and c < 0x000430 or
-		c >= 0x000531 and c < 0x000557 or
-		c >= 0x0010a0 and c < 0x0010c6 or
-		c >= 0x002c00 and c < 0x002c2f or
-		c >= 0x00ff21 and c < 0x00ff3b or
-		c >= 0x010400 and c < 0x010428 or
-		c >= 0x01d400 and c < 0x01d41a or
-		c >= 0x01d434 and c < 0x01d44e or
-		c >= 0x01d468 and c < 0x01d482 or
-		c >= 0x01d4d0 and c < 0x01d4ea or
-		c >= 0x01d56c and c < 0x01d586 or
-		c >= 0x01d5a0 and c < 0x01d5ba or
-		c >= 0x01d5d4 and c < 0x01d5ee or
-		c >= 0x01d608 and c < 0x01d622 or
-		c >= 0x01d63c and c < 0x01d656 or
-		c >= 0x01d670 and c < 0x01d68a or
-		c >= 0x01d6a8 and c < 0x01d6c1 or
-		c >= 0x01d6e2 and c < 0x01d6fb or
-		c >= 0x01d71c and c < 0x01d735 or
-		c >= 0x01d756 and c < 0x01d76f or
-		c >= 0x01d790 and c < 0x01d7a9
-end } )
-setmetatable( pats[0x77], { __index = function ( t, k )
-	return pats[0x64][k] or
-		pats[0x61][k]
-end } )
-setmetatable( pats[0x78], { __index = function ( t, k )
-	local c = tonumber( k ) or 0/0;
-	return c >= 0x00ff10 and c < 0x00ff1a
-end } )
-setmetatable( pats[0x41], { __index = function ( t, k ) return k and not pats[0x61][k] end } )
-setmetatable( pats[0x43], { __index = function ( t, k ) return k and not pats[0x63][k] end } )
-setmetatable( pats[0x44], { __index = function ( t, k ) return k and not pats[0x64][k] end } )
-setmetatable( pats[0x4c], { __index = function ( t, k ) return k and not pats[0x6c][k] end } )
-setmetatable( pats[0x50], { __index = function ( t, k ) return k and not pats[0x70][k] end } )
-setmetatable( pats[0x53], { __index = function ( t, k ) return k and not pats[0x73][k] end } )
-setmetatable( pats[0x55], { __index = function ( t, k ) return k and not pats[0x75][k] end } )
-setmetatable( pats[0x57], { __index = function ( t, k ) return k and not pats[0x77][k] end } )
-setmetatable( pats[0x58], { __index = function ( t, k ) return k and not pats[0x78][k] end } )
-setmetatable( pats[0x5a], { __index = function ( t, k ) return k and not pats[0x7a][k] end } )
+setmetatable(pats[0x61], {
+	__index = function(t, k)
+		local c = tonumber(k) or 0 / 0
+		return pats[0x6c][k]
+			or pats[0x75][k]
+			or c >= 0x0002b0 and c < 0x0002c2
+			or c >= 0x0002c6 and c < 0x0002d2
+			or c >= 0x0005d0 and c < 0x0005eb
+			or c >= 0x000620 and c < 0x00064b
+			or c >= 0x000671 and c < 0x0006d4
+			or c >= 0x000712 and c < 0x000730
+			or c >= 0x00074d and c < 0x0007a6
+			or c >= 0x0007ca and c < 0x0007eb
+			or c >= 0x000800 and c < 0x000816
+			or c >= 0x000840 and c < 0x000859
+			or c >= 0x0008a2 and c < 0x0008ad
+			or c >= 0x000904 and c < 0x00093a
+			or c >= 0x000958 and c < 0x000962
+			or c >= 0x000993 and c < 0x0009a9
+			or c >= 0x000a13 and c < 0x000a29
+			or c >= 0x000a93 and c < 0x000aa9
+			or c >= 0x000b13 and c < 0x000b29
+			or c >= 0x000bae and c < 0x000bba
+			or c >= 0x000c12 and c < 0x000c29
+			or c >= 0x000c2a and c < 0x000c34
+			or c >= 0x000c92 and c < 0x000ca9
+			or c >= 0x000caa and c < 0x000cb4
+			or c >= 0x000d12 and c < 0x000d3b
+			or c >= 0x000d85 and c < 0x000d97
+			or c >= 0x000d9a and c < 0x000db2
+			or c >= 0x000e01 and c < 0x000e31
+			or c >= 0x000f49 and c < 0x000f6d
+			or c >= 0x001000 and c < 0x00102b
+			or c >= 0x001075 and c < 0x001082
+			or c >= 0x0010d0 and c < 0x0010fb
+			or c >= 0x0010fc and c < 0x001249
+			or c >= 0x001260 and c < 0x001289
+			or c >= 0x001290 and c < 0x0012b1
+			or c >= 0x0012c8 and c < 0x0012d7
+			or c >= 0x0012d8 and c < 0x001311
+			or c >= 0x001318 and c < 0x00135b
+			or c >= 0x001380 and c < 0x001390
+			or c >= 0x0013a0 and c < 0x0013f5
+			or c >= 0x001401 and c < 0x00166d
+			or c >= 0x00166f and c < 0x001680
+			or c >= 0x001681 and c < 0x00169b
+			or c >= 0x0016a0 and c < 0x0016eb
+			or c >= 0x001700 and c < 0x00170d
+			or c >= 0x001720 and c < 0x001732
+			or c >= 0x001740 and c < 0x001752
+			or c >= 0x001760 and c < 0x00176d
+			or c >= 0x001780 and c < 0x0017b4
+			or c >= 0x001820 and c < 0x001878
+			or c >= 0x001880 and c < 0x0018a9
+			or c >= 0x0018b0 and c < 0x0018f6
+			or c >= 0x001900 and c < 0x00191d
+			or c >= 0x001950 and c < 0x00196e
+			or c >= 0x001980 and c < 0x0019ac
+			or c >= 0x001a00 and c < 0x001a17
+			or c >= 0x001a20 and c < 0x001a55
+			or c >= 0x001b05 and c < 0x001b34
+			or c >= 0x001b83 and c < 0x001ba1
+			or c >= 0x001bba and c < 0x001be6
+			or c >= 0x001c00 and c < 0x001c24
+			or c >= 0x001c5a and c < 0x001c7e
+			or c >= 0x001d2c and c < 0x001d6b
+			or c >= 0x001d9b and c < 0x001dc0
+			or c >= 0x002090 and c < 0x00209d
+			or c >= 0x002d30 and c < 0x002d68
+			or c >= 0x002d80 and c < 0x002d97
+			or c >= 0x003041 and c < 0x003097
+			or c >= 0x0030a1 and c < 0x0030fb
+			or c >= 0x003105 and c < 0x00312e
+			or c >= 0x003131 and c < 0x00318f
+			or c >= 0x0031a0 and c < 0x0031bb
+			or c >= 0x0031f0 and c < 0x003200
+			or c >= 0x003400 and c < 0x004db6
+			or c >= 0x004e00 and c < 0x009fcd
+			or c >= 0x00a000 and c < 0x00a48d
+			or c >= 0x00a4d0 and c < 0x00a4fe
+			or c >= 0x00a500 and c < 0x00a60d
+			or c >= 0x00a610 and c < 0x00a620
+			or c >= 0x00a6a0 and c < 0x00a6e6
+			or c >= 0x00a80c and c < 0x00a823
+			or c >= 0x00a840 and c < 0x00a874
+			or c >= 0x00a882 and c < 0x00a8b4
+			or c >= 0x00a90a and c < 0x00a926
+			or c >= 0x00a930 and c < 0x00a947
+			or c >= 0x00a960 and c < 0x00a97d
+			or c >= 0x00a984 and c < 0x00a9b3
+			or c >= 0x00aa00 and c < 0x00aa29
+			or c >= 0x00aa60 and c < 0x00aa77
+			or c >= 0x00aa80 and c < 0x00aab0
+			or c >= 0x00aae0 and c < 0x00aaeb
+			or c >= 0x00abc0 and c < 0x00abe3
+			or c >= 0x00ac00 and c < 0x00d7a4
+			or c >= 0x00d7b0 and c < 0x00d7c7
+			or c >= 0x00d7cb and c < 0x00d7fc
+			or c >= 0x00f900 and c < 0x00fa6e
+			or c >= 0x00fa70 and c < 0x00fada
+			or c >= 0x00fb1f and c < 0x00fb29
+			or c >= 0x00fb2a and c < 0x00fb37
+			or c >= 0x00fb46 and c < 0x00fbb2
+			or c >= 0x00fbd3 and c < 0x00fd3e
+			or c >= 0x00fd50 and c < 0x00fd90
+			or c >= 0x00fd92 and c < 0x00fdc8
+			or c >= 0x00fdf0 and c < 0x00fdfc
+			or c >= 0x00fe76 and c < 0x00fefd
+			or c >= 0x00ff66 and c < 0x00ffbf
+			or c >= 0x010000 and c < 0x01000c
+			or c >= 0x01000d and c < 0x010027
+			or c >= 0x010028 and c < 0x01003b
+			or c >= 0x01003f and c < 0x01004e
+			or c >= 0x010050 and c < 0x01005e
+			or c >= 0x010080 and c < 0x0100fb
+			or c >= 0x010280 and c < 0x01029d
+			or c >= 0x0102a0 and c < 0x0102d1
+			or c >= 0x010300 and c < 0x01031f
+			or c >= 0x010330 and c < 0x010341
+			or c >= 0x010380 and c < 0x01039e
+			or c >= 0x0103a0 and c < 0x0103c4
+			or c >= 0x010450 and c < 0x01049e
+			or c >= 0x01080a and c < 0x010836
+			or c >= 0x01083f and c < 0x010856
+			or c >= 0x010900 and c < 0x010916
+			or c >= 0x010920 and c < 0x01093a
+			or c >= 0x010980 and c < 0x0109b8
+			or c >= 0x010a19 and c < 0x010a34
+			or c >= 0x010a60 and c < 0x010a7d
+			or c >= 0x010b00 and c < 0x010b36
+			or c >= 0x010b40 and c < 0x010b56
+			or c >= 0x010b60 and c < 0x010b73
+			or c >= 0x010c00 and c < 0x010c49
+			or c >= 0x011003 and c < 0x011038
+			or c >= 0x011083 and c < 0x0110b0
+			or c >= 0x0110d0 and c < 0x0110e9
+			or c >= 0x011103 and c < 0x011127
+			or c >= 0x011183 and c < 0x0111b3
+			or c >= 0x011680 and c < 0x0116ab
+			or c >= 0x012000 and c < 0x01236f
+			or c >= 0x013000 and c < 0x01342f
+			or c >= 0x016800 and c < 0x016a39
+			or c >= 0x016f00 and c < 0x016f45
+			or c >= 0x016f93 and c < 0x016fa0
+			or c >= 0x01ee05 and c < 0x01ee20
+			or c >= 0x01ee29 and c < 0x01ee33
+			or c >= 0x01ee80 and c < 0x01ee8a
+			or c >= 0x01ee8b and c < 0x01ee9c
+			or c >= 0x01eeab and c < 0x01eebc
+			or c >= 0x020000 and c < 0x02a6d7
+			or c >= 0x02a700 and c < 0x02b735
+			or c >= 0x02b740 and c < 0x02b81e
+			or c >= 0x02f800 and c < 0x02fa1e
+	end,
+})
+setmetatable(pats[0x63], {
+	__index = function(t, k)
+		local c = tonumber(k) or 0 / 0
+		return c >= 0x000000 and c < 0x000020 or c >= 0x00007f and c < 0x0000a0
+	end,
+})
+setmetatable(pats[0x64], {
+	__index = function(t, k)
+		local c = tonumber(k) or 0 / 0
+		return c >= 0x000660 and c < 0x00066a
+			or c >= 0x0006f0 and c < 0x0006fa
+			or c >= 0x0007c0 and c < 0x0007ca
+			or c >= 0x000966 and c < 0x000970
+			or c >= 0x0009e6 and c < 0x0009f0
+			or c >= 0x000a66 and c < 0x000a70
+			or c >= 0x000ae6 and c < 0x000af0
+			or c >= 0x000b66 and c < 0x000b70
+			or c >= 0x000be6 and c < 0x000bf0
+			or c >= 0x000c66 and c < 0x000c70
+			or c >= 0x000ce6 and c < 0x000cf0
+			or c >= 0x000d66 and c < 0x000d70
+			or c >= 0x000e50 and c < 0x000e5a
+			or c >= 0x000ed0 and c < 0x000eda
+			or c >= 0x000f20 and c < 0x000f2a
+			or c >= 0x001040 and c < 0x00104a
+			or c >= 0x001090 and c < 0x00109a
+			or c >= 0x0017e0 and c < 0x0017ea
+			or c >= 0x001810 and c < 0x00181a
+			or c >= 0x001946 and c < 0x001950
+			or c >= 0x0019d0 and c < 0x0019da
+			or c >= 0x001a80 and c < 0x001a8a
+			or c >= 0x001a90 and c < 0x001a9a
+			or c >= 0x001b50 and c < 0x001b5a
+			or c >= 0x001bb0 and c < 0x001bba
+			or c >= 0x001c40 and c < 0x001c4a
+			or c >= 0x001c50 and c < 0x001c5a
+			or c >= 0x00a620 and c < 0x00a62a
+			or c >= 0x00a8d0 and c < 0x00a8da
+			or c >= 0x00a900 and c < 0x00a90a
+			or c >= 0x00a9d0 and c < 0x00a9da
+			or c >= 0x00aa50 and c < 0x00aa5a
+			or c >= 0x00abf0 and c < 0x00abfa
+			or c >= 0x00ff10 and c < 0x00ff1a
+			or c >= 0x0104a0 and c < 0x0104aa
+			or c >= 0x011066 and c < 0x011070
+			or c >= 0x0110f0 and c < 0x0110fa
+			or c >= 0x011136 and c < 0x011140
+			or c >= 0x0111d0 and c < 0x0111da
+			or c >= 0x0116c0 and c < 0x0116ca
+			or c >= 0x01d7ce and c < 0x01d800
+	end,
+})
+setmetatable(pats[0x6c], {
+	__index = function(t, k)
+		local c = tonumber(k) or 0 / 0
+		return c >= 0x0000df and c < 0x0000f7
+			or c >= 0x00024f and c < 0x000294
+			or c >= 0x000295 and c < 0x0002b0
+			or c >= 0x0003ac and c < 0x0003cf
+			or c >= 0x000430 and c < 0x000460
+			or c >= 0x000561 and c < 0x000588
+			or c >= 0x001d00 and c < 0x001d2c
+			or c >= 0x001d6b and c < 0x001d78
+			or c >= 0x001d79 and c < 0x001d9b
+			or c >= 0x001f70 and c < 0x001f7e
+			or c >= 0x002c30 and c < 0x002c5f
+			or c >= 0x002d00 and c < 0x002d26
+			or c >= 0x00ff41 and c < 0x00ff5b
+			or c >= 0x010428 and c < 0x010450
+			or c >= 0x01d41a and c < 0x01d434
+			or c >= 0x01d456 and c < 0x01d468
+			or c >= 0x01d482 and c < 0x01d49c
+			or c >= 0x01d4c5 and c < 0x01d4d0
+			or c >= 0x01d4ea and c < 0x01d504
+			or c >= 0x01d51e and c < 0x01d538
+			or c >= 0x01d552 and c < 0x01d56c
+			or c >= 0x01d586 and c < 0x01d5a0
+			or c >= 0x01d5ba and c < 0x01d5d4
+			or c >= 0x01d5ee and c < 0x01d608
+			or c >= 0x01d622 and c < 0x01d63c
+			or c >= 0x01d656 and c < 0x01d670
+			or c >= 0x01d68a and c < 0x01d6a6
+			or c >= 0x01d6c2 and c < 0x01d6db
+			or c >= 0x01d6fc and c < 0x01d715
+			or c >= 0x01d736 and c < 0x01d74f
+			or c >= 0x01d770 and c < 0x01d789
+			or c >= 0x01d7aa and c < 0x01d7c3
+	end,
+})
+setmetatable(pats[0x70], {
+	__index = function(t, k)
+		local c = tonumber(k) or 0 / 0
+		return c >= 0x000700 and c < 0x00070e
+			or c >= 0x000830 and c < 0x00083f
+			or c >= 0x000f04 and c < 0x000f13
+			or c >= 0x001800 and c < 0x00180b
+			or c >= 0x002010 and c < 0x002028
+			or c >= 0x002030 and c < 0x002044
+			or c >= 0x002045 and c < 0x002052
+			or c >= 0x002053 and c < 0x00205f
+			or c >= 0x002768 and c < 0x002776
+			or c >= 0x0027e6 and c < 0x0027f0
+			or c >= 0x002983 and c < 0x002999
+			or c >= 0x002e00 and c < 0x002e2f
+			or c >= 0x002e30 and c < 0x002e3c
+			or c >= 0x003008 and c < 0x003012
+			or c >= 0x003014 and c < 0x003020
+			or c >= 0x00a9c1 and c < 0x00a9ce
+			or c >= 0x00fe10 and c < 0x00fe1a
+			or c >= 0x00fe30 and c < 0x00fe53
+			or c >= 0x00fe54 and c < 0x00fe62
+	end,
+})
+setmetatable(pats[0x73], {
+	__index = function(t, k)
+		local c = tonumber(k) or 0 / 0
+		return c >= 0x002000 and c < 0x00200b
+	end,
+})
+setmetatable(pats[0x75], {
+	__index = function(t, k)
+		local c = tonumber(k) or 0 / 0
+		return c >= 0x0000c0 and c < 0x0000d7
+			or c >= 0x000391 and c < 0x0003a2
+			or c >= 0x0003fd and c < 0x000430
+			or c >= 0x000531 and c < 0x000557
+			or c >= 0x0010a0 and c < 0x0010c6
+			or c >= 0x002c00 and c < 0x002c2f
+			or c >= 0x00ff21 and c < 0x00ff3b
+			or c >= 0x010400 and c < 0x010428
+			or c >= 0x01d400 and c < 0x01d41a
+			or c >= 0x01d434 and c < 0x01d44e
+			or c >= 0x01d468 and c < 0x01d482
+			or c >= 0x01d4d0 and c < 0x01d4ea
+			or c >= 0x01d56c and c < 0x01d586
+			or c >= 0x01d5a0 and c < 0x01d5ba
+			or c >= 0x01d5d4 and c < 0x01d5ee
+			or c >= 0x01d608 and c < 0x01d622
+			or c >= 0x01d63c and c < 0x01d656
+			or c >= 0x01d670 and c < 0x01d68a
+			or c >= 0x01d6a8 and c < 0x01d6c1
+			or c >= 0x01d6e2 and c < 0x01d6fb
+			or c >= 0x01d71c and c < 0x01d735
+			or c >= 0x01d756 and c < 0x01d76f
+			or c >= 0x01d790 and c < 0x01d7a9
+	end,
+})
+setmetatable(pats[0x77], {
+	__index = function(t, k)
+		return pats[0x64][k] or pats[0x61][k]
+	end,
+})
+setmetatable(pats[0x78], {
+	__index = function(t, k)
+		local c = tonumber(k) or 0 / 0
+		return c >= 0x00ff10 and c < 0x00ff1a
+	end,
+})
+setmetatable(pats[0x41], {
+	__index = function(t, k)
+		return k and not pats[0x61][k]
+	end,
+})
+setmetatable(pats[0x43], {
+	__index = function(t, k)
+		return k and not pats[0x63][k]
+	end,
+})
+setmetatable(pats[0x44], {
+	__index = function(t, k)
+		return k and not pats[0x64][k]
+	end,
+})
+setmetatable(pats[0x4c], {
+	__index = function(t, k)
+		return k and not pats[0x6c][k]
+	end,
+})
+setmetatable(pats[0x50], {
+	__index = function(t, k)
+		return k and not pats[0x70][k]
+	end,
+})
+setmetatable(pats[0x53], {
+	__index = function(t, k)
+		return k and not pats[0x73][k]
+	end,
+})
+setmetatable(pats[0x55], {
+	__index = function(t, k)
+		return k and not pats[0x75][k]
+	end,
+})
+setmetatable(pats[0x57], {
+	__index = function(t, k)
+		return k and not pats[0x77][k]
+	end,
+})
+setmetatable(pats[0x58], {
+	__index = function(t, k)
+		return k and not pats[0x78][k]
+	end,
+})
+setmetatable(pats[0x5a], {
+	__index = function(t, k)
+		return k and not pats[0x7a][k]
+	end,
+})
 
 -- For speed, cache printable ASCII characters in main tables
-for k, t in pairs( pats ) do
+for k, t in pairs(pats) do
 	if k >= 0x61 then
 		for i = 0x20, 0x7e do
 			t[i] = t[i] or false

@@ -9,4 +9,3 @@ This plugin enables a software caps lock.
 
 By default, caps lock is automatically disabled after leaving insert mode for
 the insert mode mappings.
-

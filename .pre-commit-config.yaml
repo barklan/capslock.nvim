@@ -1,0 +1,51 @@
+default_stages: [commit]
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.2.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: check-added-large-files
+      - id: trailing-whitespace
+      - id: check-merge-conflict
+      - id: check-toml
+      - id: check-yaml
+      - id: detect-private-key
+      - id: check-case-conflict
+      - id: check-symlinks
+      - id: mixed-line-ending
+        args: ["--fix=no"]
+  - repo: https://github.com/jorisroovers/gitlint
+    rev: v0.17.0
+    hooks:
+      - id: gitlint
+        args: ["--ignore=body-is-missing", "--contrib=contrib-title-conventional-commits", "--msg-filename"]
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.1.0
+    hooks:
+      - id: codespell
+  - repo: https://github.com/JohnnyMorganz/StyLua
+    rev: v0.13.1
+    hooks:
+      - id: stylua
+  - repo: local
+    hooks:
+      - id: lua-filenames
+        name: check lua filenames
+        entry: lua filenames must be snake_case
+        language: fail
+        files: '[a-z0-9_/]*[^a-z0-9_/]+[a-z0-9_]*\.lua$'
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.31.1
+    hooks:
+      - id: markdownlint
+        args:
+          - "--disable=MD013"
+ci:
+  autofix_commit_msg: |
+    [pre-commit.ci] auto fixes from pre-commit.com hooks
+    for more information, see https://pre-commit.ci
+  autofix_prs: false
+  autoupdate_branch: ""
+  autoupdate_commit_msg: "[pre-commit.ci] pre-commit autoupdate"
+  autoupdate_schedule: quarterly
+  submodules: false

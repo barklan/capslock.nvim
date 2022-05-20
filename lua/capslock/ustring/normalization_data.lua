@@ -5986,7 +5986,26 @@ local normal = {
 		[0x00fdf7] = { 0x000639, 0x000644, 0x00064a, 0x000647 },
 		[0x00fdf8] = { 0x000648, 0x000633, 0x000644, 0x000645 },
 		[0x00fdf9] = { 0x000635, 0x000644, 0x000649 },
-		[0x00fdfa] = { 0x000635, 0x000644, 0x000649, 0x000020, 0x000627, 0x000644, 0x000644, 0x000647, 0x000020, 0x000639, 0x000644, 0x00064a, 0x000647, 0x000020, 0x000648, 0x000633, 0x000644, 0x000645 },
+		[0x00fdfa] = {
+			0x000635,
+			0x000644,
+			0x000649,
+			0x000020,
+			0x000627,
+			0x000644,
+			0x000644,
+			0x000647,
+			0x000020,
+			0x000639,
+			0x000644,
+			0x00064a,
+			0x000647,
+			0x000020,
+			0x000648,
+			0x000633,
+			0x000644,
+			0x000645,
+		},
 		[0x00fdfb] = { 0x00062c, 0x000644, 0x000020, 0x00062c, 0x000644, 0x000627, 0x000644, 0x000647 },
 		[0x00fdfc] = { 0x000631, 0x0006cc, 0x000627, 0x000644 },
 		[0x00fe10] = { 0x00002c },
@@ -9391,60 +9410,68 @@ local normal = {
 }
 
 -- All combining characters need to be checked, so just do that
-setmetatable( normal.check, { __index = normal.combclass } )
+setmetatable(normal.check, { __index = normal.combclass })
 
 -- Handle Hangul to Jamo decomposition
-setmetatable( normal.decomp, { __index = function ( _, k )
-	if k >= 0xac00 and k <= 0xd7a3 then
-		-- Decompose a Hangul syllable into Jamo
-		k = k - 0xac00
-		local ret = {
-			0x1100 + math.floor( k / 588 ),
-			0x1161 + math.floor( ( k % 588 ) / 28 )
-		}
-		if k % 28 ~= 0 then
-			ret[3] = 0x11a7 + ( k % 28 )
+setmetatable(normal.decomp, {
+	__index = function(_, k)
+		if k >= 0xac00 and k <= 0xd7a3 then
+			-- Decompose a Hangul syllable into Jamo
+			k = k - 0xac00
+			local ret = {
+				0x1100 + math.floor(k / 588),
+				0x1161 + math.floor((k % 588) / 28),
+			}
+			if k % 28 ~= 0 then
+				ret[3] = 0x11a7 + (k % 28)
+			end
+			return ret
 		end
-		return ret
-	end
-	return nil
-end } )
+		return nil
+	end,
+})
 
 -- Handle Jamo to Hangul composition
-local jamo_l_v_mt = { __index = function ( t, k )
-	if k >= 0x1161 and k <= 0x1175 then
-		-- Jamo leading + Jamo vowel
-		return t.base + 28 * ( k - 0x1161 )
-	end
-	return nil
-end }
-local hangul_jamo_mt = { __index = function ( t, k )
-	if k >= 0x11a7 and k <= 0x11c2 then
-		-- Hangul + jamo final
-		return t.base + k - 0x11a7
-	end
-	return nil
-end }
-setmetatable( normal.comp, { __index = function ( t, k )
-	if k >= 0x1100 and k <= 0x1112 then
-		-- Jamo leading, return a second table that combines with a Jamo vowel
-		local t2 = { base = 0xac00 + 588 * ( k - 0x1100 ) }
-		setmetatable( t2, jamo_l_v_mt )
-		t[k] = t2 -- cache it
-		return t2
-	elseif k >= 0xac00 and k <= 0xd7a3 and k % 28 == 16 then
-		-- Hangul. "k % 28 == 16" picks out just the ones that are
-		-- Jamo leading + vowel, no final. Return a second table that combines
-		-- with a Jamo final.
-		local t2 = { base = k }
-		setmetatable( t2, hangul_jamo_mt )
-		t[k] = t2 -- cache it
-		return t2
-	end
-	return nil
-end } )
+local jamo_l_v_mt = {
+	__index = function(t, k)
+		if k >= 0x1161 and k <= 0x1175 then
+			-- Jamo leading + Jamo vowel
+			return t.base + 28 * (k - 0x1161)
+		end
+		return nil
+	end,
+}
+local hangul_jamo_mt = {
+	__index = function(t, k)
+		if k >= 0x11a7 and k <= 0x11c2 then
+			-- Hangul + jamo final
+			return t.base + k - 0x11a7
+		end
+		return nil
+	end,
+}
+setmetatable(normal.comp, {
+	__index = function(t, k)
+		if k >= 0x1100 and k <= 0x1112 then
+			-- Jamo leading, return a second table that combines with a Jamo vowel
+			local t2 = { base = 0xac00 + 588 * (k - 0x1100) }
+			setmetatable(t2, jamo_l_v_mt)
+			t[k] = t2 -- cache it
+			return t2
+		elseif k >= 0xac00 and k <= 0xd7a3 and k % 28 == 16 then
+			-- Hangul. "k % 28 == 16" picks out just the ones that are
+			-- Jamo leading + vowel, no final. Return a second table that combines
+			-- with a Jamo final.
+			local t2 = { base = k }
+			setmetatable(t2, hangul_jamo_mt)
+			t[k] = t2 -- cache it
+			return t2
+		end
+		return nil
+	end,
+})
 
 -- Compatibility decomposition falls back to the normal decomposition
-setmetatable( normal.decompK, { __index = normal.decomp } )
+setmetatable(normal.decompK, { __index = normal.decomp })
 
 return normal
