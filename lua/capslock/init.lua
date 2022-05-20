@@ -1,11 +1,13 @@
 local M = {}
 
 M.capslock = "capslock"
+M.status_string_const = "[CAPS LOCK]"
+M.keybinding_const = "<Plug>CapsLockToggle"
 
 M.ustring = require("capslock.ustring.ustring")
 
 M.enable = function(mode)
-    vim.api.nvim_buf_set_var(0, M.capslock .. mode, true)
+    vim.api.nvim_buf_set_var(0, M.capslock .. mode, M.capslock)
     if mode == "c" then
         local i = string.byte("A")
         while i <= string.byte("Z") do
@@ -30,14 +32,11 @@ M.disable = function(mode)
 end
 
 M.enabled = function(mode)
-    -- vim.api.nvim_buf_get_var(0, M.capslock .. mode) panics if var is not set
-    if mode == "n" then
-        return vim.b.capslockn
-    elseif mode == "i" then
-        return vim.b.capslocki
-    elseif mode == "c" then
-        return vim.b.capslockc
+    local status, val = pcall(vim.api.nvim_buf_get_var, 0, M.capslock .. mode)
+    if status == true and val == M.capslock then
+        return true
     end
+    return false
 end
 
 M.toggle = function(mode)
@@ -76,19 +75,19 @@ M.insert_upper = function()
 end
 
 M.status_string = function()
-    modes = { "n", "i", "c" }
+    local modes = { "n", "i", "c" }
     for _, mode in ipairs(modes) do
         if M.enabled(mode) then
-            return "[CAPS LOCK]"
+            return M.status_string_const
         end
     end
     return ""
 end
 
 M.setup = function()
-    vim.keymap.set("n", "<Plug>CapsLockToggle", function() M.toggle("n") end, { silent = true })
-    vim.keymap.set("i", "<Plug>CapsLockToggle", function() M.toggle("i") end, { silent = true })
-    vim.keymap.set("c", "<Plug>CapsLockToggle", function() M.toggle("c") end, { silent = true })
+    vim.keymap.set("n", M.keybinding_const, function() M.toggle("n") end, { silent = true })
+    vim.keymap.set("i", M.keybinding_const, function() M.toggle("i") end, { silent = true })
+    vim.keymap.set("c", M.keybinding_const, function() M.toggle("c") end, { silent = true })
 
     vim.api.nvim_create_augroup(M.capslock, { clear = true })
     vim.api.nvim_create_autocmd("InsertLeave", {
