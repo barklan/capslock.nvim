@@ -2,7 +2,7 @@
 
 Software caps lock for Neovim.
 
-Works in insert and normal modes. Normal mode commands, other buffers, and other applications
+Works in normal, insert and command modes. Normal mode commands, other buffers, and other applications
 are unaffected. Especially useful if caps lock key is acting as another `Ctrl` or `Esc`.
 
 ## Installation
@@ -13,15 +13,19 @@ Via [packer](https://github.com/wbthomason/packer.nvim):
 use("barklan/capslock.nvim")
 ```
 
-## Setup
+## Setup & Usage
 
 ```lua
 require("capslock").setup()
-vim.keymap.set("i", "<C-g>c", require("capslock").toggle)
+vim.keymap.set({ "i", "c", "n" }, "<C-g>c", "<Plug>CapsLockToggle")
 ```
 
-This maps `<C-g>c` in insert mode to toggle a temporary caps lock.
-It is automatically disabled after leaving insert mode.
+This maps `<C-g>c` in insert, command and normal modes to toggle caps lock.
+
+- When activated in insert or command mode it toggles temporary caps lock.
+It is automatically disabled after leaving insert mode or command line.
+- When activated in normal mode, it toggles caps lock for both normal and insert modes
+(overriding insert mode caps lock state) and doesn't turn off automatically.
 
 ## Lualine integration
 
