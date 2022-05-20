@@ -13,14 +13,15 @@ M.enable = function(mode)
             vim.keymap.set(mode, string.char(i + 32), string.char(i), { buffer = true })
             i = i + 1
         end
+        vim.cmd("redraws")
     end
 end
 
 M.disable = function(mode)
     vim.api.nvim_buf_del_var(0, M.capslock .. mode)
     if mode == "c" then
-        local i = string.byte('A')
-        while i <= string.byte('Z') do
+        local i = string.byte("A")
+        while i <= string.byte("Z") do
             vim.keymap.del(mode, string.char(i), { buffer = true })
             vim.keymap.del(mode, string.char(i + 32), { buffer = true })
             i = i + 1
