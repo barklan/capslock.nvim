@@ -48,4 +48,3 @@ This will display `[CAPS LOCK]` when caps lock is active.
 - Unicode support enabled thanks to
 [ustring](https://github.com/wikimedia/mediawiki-extensions-Scribunto/tree/master/includes/engines/LuaCommon/lualib/ustring)
 library.
-
