@@ -2,6 +2,8 @@ local M = {}
 
 M.capslock = "capslock"
 
+M.ustring = require("capslock.ustring.ustring")
+
 M.enable = function(mode)
     vim.api.nvim_buf_set_var(0, M.capslock .. mode, true)
     if mode == "c" then
@@ -63,9 +65,9 @@ end
 M.insert_upper = function()
     if M.enabled("i") or M.enabled("n") then
         local char = vim.v.char
-        local lower = string.lower(char)
+        local lower = M.ustring.lower(char)
         if char == lower then
-            vim.v.char = string.upper(char)
+            vim.v.char = M.ustring.upper(char)
         else
             vim.v.char = lower
         end
