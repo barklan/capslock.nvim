@@ -1,0 +1,27 @@
+name: integration-tests
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Test
+        uses: addnab/docker-run-action@v3
+        with:
+          image: barklan/neovim-tester:latest
+          options: |
+            -v ${{ github.workspace }}/tests/init.lua:/root/.config/nvim/init.lua
+            -v ${{ github.workspace }}/lua/:/root/.config/nvim/lua/
+            -v ${{ github.workspace }}/tests/:/root/tests/
+            -w /root/tests/
+            -u root
+          run: |
+            ls -lah
+            bash test.sh
