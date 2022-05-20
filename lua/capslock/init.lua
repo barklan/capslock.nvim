@@ -40,6 +40,13 @@ M.insert_upper = function()
     end
 end
 
+M.status_string = function()
+    if M.enabled() == true then
+        return "[CAPS LOCK]"
+    end
+    return ""
+end
+
 M.setup = function()
     vim.api.nvim_create_augroup(M.capslock, { clear = true })
     vim.api.nvim_create_autocmd("InsertLeave", {
