@@ -3,11 +3,12 @@
 Software caps lock for Neovim.
 
 Works in normal, insert and command modes. Normal mode commands, other buffers, and other applications
-are unaffected. Especially useful if caps lock key is acting as another `Ctrl` or `Esc`.
+are unaffected (e.g. `jk` mapped as `Escape` in insert mode will work with caps lock enabled).
+Especially useful if caps lock key is acting as another `Ctrl` or `Esc`.
 
 ## Installation
 
-Via [packer](https://github.com/wbthomason/packer.nvim):
+Neovim 0.7.0+ required. Example via [packer](https://github.com/wbthomason/packer.nvim):
 
 ```lua
 use("barklan/capslock.nvim")
