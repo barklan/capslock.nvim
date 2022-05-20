@@ -1,1 +1,1 @@
-icthis is all caps sentenceaand this is the usualctoggle alsoc works!canormal modea also works!ccaoff now.:wq
+icnow this sentence is all capsiand this is all lowercaseci can turn it on cand offciactivated in normal modea and continuec, de€kb€kbcdeactivated in insert mode:wq:w test_output.txt:q:q:q!:q!
