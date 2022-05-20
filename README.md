@@ -2,8 +2,8 @@
 
 Software caps lock for Neovim.
 
-Only works in insert mode. Useful in that commands, other buffers, and other applications
-are unaffected or if Caps lock key is acting as another `Ctrl` or `Esc`.
+Works in insert and normal modes. Normal mode commands, other buffers, and other applications
+are unaffected. Especially useful if caps lock key is acting as another `Ctrl` or `Esc`.
 
 ## Installation
 
@@ -39,5 +39,5 @@ This will display `[CAPS LOCK]` when caps lock is active.
 
 ## Related
 
-Inspired by tpope's [vim-capslock](https://github.com/tpope/vim-capslock) (that additionally works in normal mode).
+Inspired by tpope's [vim-capslock](https://github.com/tpope/vim-capslock).
 
