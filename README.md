@@ -23,6 +23,20 @@ vim.keymap.set("i", "<C-g>c", require("capslock").toggle)
 This maps `<C-g>c` in insert mode to toggle a temporary caps lock.
 It is automatically disabled after leaving insert mode.
 
+## Lualine integration
+
+```lua
+require("lualine").setup({
+    sections = {
+        lualine_x = {
+            { require("capslock").status_string },
+        },
+    },
+})
+```
+
+This will display `[CAPS LOCK]` when caps lock is active.
+
 ## Related
 
 Inspired by tpope's [vim-capslock](https://github.com/tpope/vim-capslock) (that additionally works in normal mode).
