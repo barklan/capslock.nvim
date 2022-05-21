@@ -29,7 +29,12 @@ This maps `<C-g>c` in insert, command and normal modes and `<C-l>` in insert mod
 - When activated in normal mode, it toggles caps lock for both normal and insert modes
   and doesn't turn off automatically.
 
-## Lualine integration
+## Statusline integration
+
+Use `require("capslock").status_string` function as a status line component to
+display `[CAPS LOCK]` when caps lock is active.
+
+### lualine
 
 ```lua
 require("lualine").setup({
@@ -41,7 +46,9 @@ require("lualine").setup({
 })
 ```
 
-This will display `[CAPS LOCK]` when caps lock is active.
+### feline
+
+Set the function above as a `provider` in status line component.
 
 ## Related
 
