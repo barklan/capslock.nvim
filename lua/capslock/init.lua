@@ -38,6 +38,7 @@ M.disable = function(mode)
             vim.keymap.del(mode, string.char(i + 32), { buffer = true })
             i = i + 1
         end
+        vim.cmd("redraws")
     end
 end
 
