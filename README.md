@@ -19,14 +19,15 @@ use("barklan/capslock.nvim")
 ```lua
 require("capslock").setup()
 vim.keymap.set({ "i", "c", "n" }, "<C-g>c", "<Plug>CapsLockToggle")
+vim.keymap.set("i", "<C-l>", "<Plug>CapsLockToggle")
 ```
 
-This maps `<C-g>c` in insert, command and normal modes to toggle caps lock.
+This maps `<C-g>c` in insert, command and normal modes and `<C-l>` in insert mode to toggle caps lock.
 
 - When activated in insert or command mode it toggles temporary caps lock.
-It is automatically disabled after leaving insert mode or command line.
+  It is automatically disabled after leaving insert mode or command line.
 - When activated in normal mode, it toggles caps lock for both normal and insert modes
-(overriding insert mode caps lock state) and doesn't turn off automatically.
+  and doesn't turn off automatically.
 
 ## Lualine integration
 
@@ -46,5 +47,5 @@ This will display `[CAPS LOCK]` when caps lock is active.
 
 - Inspired by tpope's [vim-capslock](https://github.com/tpope/vim-capslock).
 - Unicode support enabled thanks to
-[ustring](https://github.com/wikimedia/mediawiki-extensions-Scribunto/tree/master/includes/engines/LuaCommon/lualib/ustring)
-library.
+  [ustring](https://github.com/wikimedia/mediawiki-extensions-Scribunto/tree/master/includes/engines/LuaCommon/lualib/ustring)
+  library.
