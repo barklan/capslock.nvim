@@ -8,21 +8,21 @@ Especially useful if caps lock key is acting as another `Ctrl` or `Esc`.
 
 ## Installation
 
-Neovim 0.7.0+ required. Example via [packer](https://github.com/wbthomason/packer.nvim):
+Neovim 0.7.0+ required. Example via [lazy.nvim](https://github.com/folke/lazy.nvim):
 
 ```lua
-use("barklan/capslock.nvim")
+{
+    "barklan/capslock.nvim",
+    lazy = true,
+    keys = {
+        { "<C-l>", "<Plug>CapsLockToggle", mode = { "i", "c" } },
+        { "<leader>c", "<Plug>CapsLockToggle", mode = { "n" } },
+    },
+    config = true,
+},
 ```
 
-## Setup & Usage
-
-```lua
-require("capslock").setup()
-vim.keymap.set({ "i", "c", "n" }, "<C-g>c", "<Plug>CapsLockToggle")
-vim.keymap.set("i", "<C-l>", "<Plug>CapsLockToggle")
-```
-
-This maps `<C-g>c` in insert, command and normal modes and `<C-l>` in insert mode to toggle caps lock.
+## Usage
 
 - When activated in insert or command mode it toggles temporary caps lock.
   It is automatically disabled after leaving insert mode or command line.
